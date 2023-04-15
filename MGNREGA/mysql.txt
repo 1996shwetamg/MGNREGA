@@ -1,0 +1,249 @@
+mysql> CREATE TABLE BDO(BDO_ID INT AUTO_INCREMENT PRIMARY KEY,USERNAME VA
+RCHAR(225) NOT NULL,PASSWORD VARCHAR(225) NOT NULL,IS_DELETE INT DEFAULT
+0);
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> desc BDO;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| BDO_ID    | int          | NO   | PRI | NULL    | auto_increment |
+| USERNAME  | varchar(225) | NO   |     | NULL    |                |
+| PASSWORD  | varchar(225) | NO   |     | NULL    |                |
+| IS_DELETE | int          | YES  |     | 0       |                |
++-----------+--------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+
+mysql> CREATE TABLE PROJECT (PROJECT_ID INT AUTO_INCREMENT PRIMARY KEY, PROJECT_NAME VARCHAR(225) NOT NULL, START_DATE DATE NOT NULL, END_DATE DATE NOT NULL, WORKERS_NUMBER INT NOT NULL, PER_DAY_WAGES FLOAT NOT NULL, IS_DELETE INT DEFAULT 0);
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> desc project;
++----------------+--------------+------+-----+---------+----------------+
+| Field          | Type         | Null | Key | Default | Extra          |
++----------------+--------------+------+-----+---------+----------------+
+| PROJECT_ID     | int          | NO   | PRI | NULL    | auto_increment |
+| PROJECT_NAME   | varchar(225) | NO   |     | NULL    |                |
+| START_DATE     | date         | NO   |     | NULL    |                |
+| END_DATE       | date         | NO   |     | NULL    |                |
+| WORKERS_NUMBER | int          | NO   |     | NULL    |                |
+| PER_DAY_WAGES  | float        | NO   |     | NULL    |                |
+| IS_DELETE      | int          | YES  |     | 0       |                |
++----------------+--------------+------+-----+---------+----------------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT * FROM project;
++------------+--------------+------------+------------+----------------+---------------+-----------+
+| PROJECT_ID | PROJECT_NAME | START_DATE | END_DATE   | WORKERS_NUMBER | PER_DAY_WAGES | IS_DELETE |
++------------+--------------+------------+------------+----------------+---------------+-----------+
+|          1 | tree_plant   | 2020-01-01 | 2020-02-09 |             10 |           200 |         0 |
+|          2 | roadclean    | 2021-01-01 | 2023-01-01 |             12 |           300 |         0 |
++------------+--------------+------------+------------+----------------+---------------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM project;
++------------+---------------+------------+------------+----------------+---------------+-----------+
+| PROJECT_ID | PROJECT_NAME  | START_DATE | END_DATE   | WORKERS_NUMBER | PER_DAY_WAGES | IS_DELETE |
++------------+---------------+------------+------------+----------------+---------------+-----------+
+|          1 | tree_plant    | 2020-01-01 | 2020-02-09 |             10 |           200 |         0 |
+|          2 | roadclean     | 2021-01-01 | 2023-01-01 |             12 |           300 |         0 |
+|          3 | roadconstruct | 2023-03-12 | 2023-08-12 |             15 |           500 |         0 |
++------------+---------------+------------+------------+----------------+---------------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> CREATE TABLE GPM(GPM_ID INT AUTO_INCREMENT PRIMARY KEY, AADHAR_NUMBER VARCHAR(12) NOT NULL,NAME VARCHAR(225) NOT NULL, DOB DATE NOT NULL,  GENDER VARCHAR(10) NOT NULL, PANCHAYAT_NAME VARCHAR(225) NOT NULL, DISTRIC VARCHAR(225) NOT NULL, STATE VARCHAR(225) NOT NULL, IS_DELETE INT DEFAULT 0, CONSTRAINT UNIQUE_AADHAR UNIQUE (AADHAR_NUMBER));
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> desc gpm
+    -> ;
++----------------+--------------+------+-----+---------+----------------+
+| Field          | Type         | Null | Key | Default | Extra          |
++----------------+--------------+------+-----+---------+----------------+
+| GPM_ID         | int          | NO   | PRI | NULL    | auto_increment |
+| AADHAR_NUMBER  | varchar(12)  | NO   | UNI | NULL    |                |
+| NAME           | varchar(225) | NO   |     | NULL    |                |
+| DOB            | date         | NO   |     | NULL    |                |
+| GENDER         | varchar(10)  | NO   |     | NULL    |                |
+| PANCHAYAT_NAME | varchar(225) | NO   |     | NULL    |                |
+| DISTRIC        | varchar(225) | NO   |     | NULL    |                |
+| STATE          | varchar(225) | NO   |     | NULL    |                |
+| IS_DELETE      | int          | YES  |     | 0       |                |
++----------------+--------------+------+-----+---------+----------------+
+9 rows in set (0.04 sec)
+
+
+mysql> SELECT * FROM gpm;
++--------+---------------+--------+------------+--------+----------------+----------+-----------+-----------+
+| GPM_ID | AADHAR_NUMBER | NAME   | DOB        | GENDER | PANCHAYAT_NAME | DISTRIC  | STATE     | IS_DELETE |
++--------+---------------+--------+------------+--------+----------------+----------+-----------+-----------+
+|      1 | 123445676789  | shweta | 1996-11-28 | female | kolavi         | belagavi | karnataka |         0 |
++--------+---------------+--------+------------+--------+----------------+----------+-----------+-----------+
+1 row in set (0.00 sec)
+
+mysql> CREATE TABLE WORKER(WORKER_ID INT AUTO_INCREMENT PRIMARY KEY, AADHAR_NUMBER VARCHAR(12) NOT NULL,NAME VARCHAR(225) NOT NULL, DOB DATE NOT NULL, GENDER VARCHAR(10) NOT NULL, PANCHAYAT_NAME VARCHAR(225) NOT NULL, DISTRIC VARCHAR(225) NOT NULL, STATE VARCHAR(225) NOT NULL, IS_DELETE INT DEFAULT 0, CONSTRAIN
+T UNIQUE_AADHAR UNIQUE (AADHAR_NUMBER));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> desc worker;
++----------------+--------------+------+-----+---------+----------------+
+| Field          | Type         | Null | Key | Default | Extra          |
++----------------+--------------+------+-----+---------+----------------+
+| WORKER_ID      | int          | NO   | PRI | NULL    | auto_increment |
+| AADHAR_NUMBER  | varchar(12)  | NO   | UNI | NULL    |                |
+| NAME           | varchar(225) | NO   |     | NULL    |                |
+| DOB            | date         | NO   |     | NULL    |                |
+| GENDER         | varchar(10)  | NO   |     | NULL    |                |
+| PANCHAYAT_NAME | varchar(225) | NO   |     | NULL    |                |
+| DISTRIC        | varchar(225) | NO   |     | NULL    |                |
+| STATE          | varchar(225) | NO   |     | NULL    |                |
+| IS_DELETE      | int          | YES  |     | 0       |                |
++----------------+--------------+------+-----+---------+----------------+
+9 rows in set (0.03 sec)
+
+mysql> insert into worker(aadhar_number,name,dob,gender,panchayat_name,distric,state) values('123456789087','sarala','1999-12-31','female','kolavi','belagavi','karnataka');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from worker;
++-----------+---------------+--------+------------+--------+----------------+----------+-----------+-----------+
+| WORKER_ID | AADHAR_NUMBER | NAME   | DOB        | GENDER | PANCHAYAT_NAME | DISTRIC  | STATE     | IS_DELETE |
++-----------+---------------+--------+------------+--------+----------------+----------+-----------+-----------+
+|         1 | 123456789087  | sarala | 1999-12-31 | female | kolavi         | belagavi | karnataka |         0 |
++-----------+---------------+--------+------------+--------+----------------+----------+-----------+-----------+
+1 row in set (0.00 sec)
+
+mysql> CREATE TABLE GPM_PROJECT(GPM_ID INT NOT NULL, PROJECT_ID INT NOT NULL, PRIMARY KEY(CREATE TABLE GPM_PROJECT(GPM_ID INT NOT NULL, PROJECT_ID INT NOT NULL, PRCREATE TABLE GPM_PROJECT(GPM_ID INT NOT NULL, PROJECT_ID INT NOT NULL, PRIMARY KEY(GPM_ID, PROJECT_ID), FOREIGN KEY (GPM_ID) REFERENCES GPM(GPM_ID) ON DELETE CASCADE, FOREIGN KEY (PROJECT_ID) REFERENCES PROJECT(PROJECT_ID) ON DELETE CASCADE);
+Query OK, 0 rows affected (0.16 sec)
+
+mysql> desc gpm_project;
++------------+------+------+-----+---------+-------+
+| Field      | Type | Null | Key | Default | Extra |
++------------+------+------+-----+---------+-------+
+| GPM_ID     | int  | NO   | PRI | NULL    |       |
+| PROJECT_ID | int  | NO   | PRI | NULL    |       |
++------------+------+------+-----+---------+-------+
+2 rows in set (0.03 sec)
+
+
+mysql> select * from project where project_id =1;
++------------+--------------+------------+------------+----------------+---------------+-----------+
+| PROJECT_ID | PROJECT_NAME | START_DATE | END_DATE   | WORKERS_NUMBER | PER_DAY_WAGES | IS_DELETE |
++------------+--------------+------------+------------+----------------+---------------+-----------+
+|          1 | tree_plant   | 2020-01-01 | 2020-02-09 |             10 |
+200 |         0 |
++------------+--------------+------------+------------+----------------+---------------+-----------+
+1 row in set (0.03 sec)
+
+mysql> select * from gpm_project;
++--------+------------+
+| GPM_ID | PROJECT_ID |
++--------+------------+
+|      1 |          1 |
++--------+------------+
+1 row in set (0.00 sec)
+
+
+mysql> select * from worker;
++-----------+---------------+--------+------------+--------+----------------+----------+-----------+-----------+
+| WORKER_ID | AADHAR_NUMBER | NAME   | DOB        | GENDER | PANCHAYAT_NAME | DISTRIC  | STATE     | IS_DELETE |
++-----------+---------------+--------+------------+--------+----------------+----------+-----------+-----------+
+|         1 | 123456789087  | sarala | 1999-12-31 | female | kolavi         | belagavi | karnataka |         0 |
+|         2 | 123456789012  | vijay  | 1997-10-07 | male   | kolavi         | belagavi | karnataka |         0 |
++-----------+---------------+--------+------------+--------+----------------+----------+-----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select * from gpm;
++--------+---------------+--------+------------+--------+----------------+----------+-----------+-----------+
+| GPM_ID | AADHAR_NUMBER | NAME   | DOB        | GENDER | PANCHAYAT_NAME | DISTRIC  | STATE     | IS_DELETE |
++--------+---------------+--------+------------+--------+----------------+----------+-----------+-----------+
+|      1 | 123445676789  | shweta | 1996-11-28 | female | kolavi         | belagavi | karnataka |         0 |
++--------+---------------+--------+------------+--------+----------------+----------+-----------+-----------+
+1 row in set (0.00 sec)
+
+mysql> CREATE TABLE WORKER_PROJECT(WORKER_ID INT NOT NULL, PROJECT_ID INT NOT NULL, PRIMARY KEY (WORKER_ID, PROJECT_ID), FOREIGN KEY (WORKER_ID) REFERENCES WORKER (WORKER_ID) ON DELETE CASCADE, FOREIGN KEY (PROJECT_ID) REFERENCES PROJECT (PROJECT_ID) ON DELETE CASCADE);
+Query OK, 0 rows affected (0.13 sec)
+
+mysql> desc worker_project;
++------------+------+------+-----+---------+-------+
+| Field      | Type | Null | Key | Default | Extra |
++------------+------+------+-----+---------+-------+
+| WORKER_ID  | int  | NO   | PRI | NULL    |       |
+| PROJECT_ID | int  | NO   | PRI | NULL    |       |
++------------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from project;
++------------+-----------------+------------+------------+----------------+---------------+-----------+
+| PROJECT_ID | PROJECT_NAME    | START_DATE | END_DATE   | WORKERS_NUMBER | PER_DAY_WAGES | IS_DELETE |
++------------+-----------------+------------+------------+----------------+---------------+-----------+
+|          1 | tree_plant      | 2020-01-01 | 2020-02-09 |             10 |           200 |         0 |
+|          2 | roadclean       | 2021-01-01 | 2023-01-01 |             12 |           300 |         0 |
+|          3 | roadconstruct   | 2023-03-12 | 2023-08-12 |             15 |           500 |         0 |
+|          4 | constructtoilet | 2023-09-01 | 2023-09-10 |             13 |           400 |         0 |
++------------+-----------------+------------+------------+----------------+---------------+-----------+
+4 rows in set (0.00 sec)
+mysql> SELECT w.name,(p.end_date-p.start_date) as total_days_of_work FROM worker w INNER JOIN Project p WHERE p.project_name='tree_plant';
++--------+--------------------+
+| name   | total_days_of_work |
++--------+--------------------+
+| sarala |                108 |
+| vijay  |                108 |
++--------+--------------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from project;
++------------+-----------------+------------+------------+----------------+---------------+-----------+
+| PROJECT_ID | PROJECT_NAME    | START_DATE | END_DATE   | WORKERS_NUMBER | PER_DAY_WAGES | IS_DELETE |
++------------+-----------------+------------+------------+----------------+---------------+-----------+
+|          1 | tree_plant      | 2020-01-01 | 2020-02-09 |             10 |           200 |         0 |
+|          2 | roadclean       | 2021-01-01 | 2023-01-01 |             12 |           300 |         0 |
+|          3 | roadconstruct   | 2023-03-12 | 2023-08-12 |             15 |           500 |         0 |
+|          4 | constructtoilet | 2023-09-01 | 2023-09-10 |             13 |           400 |         0 |
+|          5 | schoolcleaning  | 2023-02-09 | 2023-02-13 |              6 |           250 |         0 |
++------------+-----------------+------------+------------+----------------+---------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select * from gpm;
++--------+---------------+-----------+------------+--------+----------------+----------+-----------+-----------+
+| GPM_ID | AADHAR_NUMBER | NAME      | DOB        | GENDER | PANCHAYAT_NAME | DISTRIC  | STATE     | IS_DELETE |
++--------+---------------+-----------+------------+--------+----------------+----------+-----------+-----------+
+|      1 | 123445676789  | shweta    | 1996-11-28 | female | kolavi         | belagavi | karnataka |         0 |
+|      2 | 098756472345  | kamala    | 1989-02-19 | female | benchinmardi   | dharwad  | karnataka |         0 |
+|      3 | 168529063456  | mahantesh | 1985-04-01 | male   | dhara          | kunigal  | andra     |         0 |
++--------+---------------+-----------+------------+--------+----------------+----------+-----------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT w.name,sum(per_day_wages) as totalwage FROM worker w INNER JOIN Project p;
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'vital_hose_4725.w.NAME'; this is incompatible with sql_mode=only_full_group_by
+mysql> SELECT w.name,sum(per_day_wages) as totalwage FROM worker w INNER JOIN Project p group by w.name;
++--------+-----------+
+| name   | totalwage |
++--------+-----------+
+| vijay  |      1650 |
+| sarala |      1650 |
++--------+-----------+
+2 rows in set (0.03 sec)
+
+mysql> select * from worker;
++-----------+---------------+-------+------------+--------+----------------+----------+-----------+-----------+
+| WORKER_ID | AADHAR_NUMBER | NAME  | DOB        | GENDER | PANCHAYAT_NAME | DISTRIC  | STATE     | IS_DELETE |
++-----------+---------------+-------+------------+--------+----------------+----------+-----------+-----------+
+|         2 | 123456789012  | vijay | 1997-10-07 | male   | kolavi         | belagavi | karnataka |         0 |
++-----------+---------------+-------+------------+--------+----------------+----------+-----------+-----------+
+1 row in set (0.00 sec)
+
+
+mysql> SELECT w.name AS worker_name, SUM(DATEDIFF(p.end_date, p.start_date) + 1) AS total_days_worked FROM worker w JOIN worker_project wp ON w.worker_id = wp.worker_id JOIN project p ON wp.project_id = p.project_id WHERE w.is_delete = 0 AND p.is_delete = 0 GROUP BY w.worker_id;
++-------------+-------------------+
+| worker_name | total_days_worked |
++-------------+-------------------+
+| sham        |                10 |
++-------------+-------------------+
+1 row in set (0.03 sec)
+
+mysql> SELECT w.name AS worker_name, SUM(DATEDIFF(p.end_date, p.start_date) + 1)*p.per_day_wages AS total_Wages FROM worker w JOIN worker_project wp ON w.worker_id = wp.worker_id JOIN project p ON wp.project_id = p.project_id WHERE w.is_delete = 0 AND p.is_delete = 0 GROUP BY w.worker_id, p.per_day_wages;
++-------------+-------------+
+| worker_name | total_Wages |
++-------------+-------------+
+| sham        |        4000 |
++-------------+-------------+
+1 row in set (0.03 sec)
