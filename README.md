@@ -66,7 +66,7 @@ MNREGA(The Mahatma Gandhi National Rural Employment Guarantee Act ) is a scheme 
 
 - [ Repository ](https://github.com/1996shwetamg/vital-hose-4725) 
 
-- [ Database ](https://github.com/1996shwetamg/vital-hose-4725/blob/main/vital-hose-4725/MGNREGA/mysql.txt)
+- [ Database ](https://github.com/1996shwetamg/vital-hose-4725/blob/main/MGNREGA/mysql.txt)
 
 ## ER Diagram
     
